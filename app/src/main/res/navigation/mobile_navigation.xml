@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_trangchu">
+
+    <fragment
+        android:id="@+id/nav_trangchu"
+        android:name="com.udgs123.demo3gs.ui.trangchu.TrangchuFragment"
+        android:label="@string/menu_trangchu"
+        tools:layout="@layout/fragment_trangchu" />
+
+    <fragment
+        android:id="@+id/nav_dslophoc"
+        android:name="com.udgs123.demo3gs.ui.dslophoc.DslophocFragment"
+        android:label="@string/menu_dslophoc"
+        tools:layout="@layout/fragment_dslophoc" />
+
+    <fragment
+        android:id="@+id/nav_lopchonhan"
+        android:name="com.udgs123.demo3gs.ui.lopchonhan.LopchonhanFragment"
+        android:label="@string/menu_lopchonhan"
+        tools:layout="@layout/fragment_lopchonhan" />
+
+    <fragment
+        android:id="@+id/nav_lichsulophoc"
+        android:name="com.udgs123.demo3gs.ui.lichsulophoc.LichsulophocFragment"
+        android:label="@string/menu_lichsulophoc"
+        tools:layout="@layout/fragment_lichsulophoc" />
+
+    <fragment
+        android:id="@+id/nav_lichnghi"
+        android:name="com.udgs123.demo3gs.ui.lichnghi.LichnghiFragment"
+        android:label="@string/menu_lichnghi"
+        tools:layout="@layout/fragment_lichnghi" />
+
+    <fragment
+        android:id="@+id/nav_lopcangiasu"
+        android:name="com.udgs123.demo3gs.ui.lopcangiasu.LopcangiasuFragment"
+        android:label="@string/menu_lopcangiasu"
+        tools:layout="@layout/fragment_lopcangiasu" />
+    <fragment android:id="@+id/nav_thoikhoabieu"
+        android:name="com.udgs123.demo3gs.ui.thoikhoabieu.ThoikhoabieuFragment"
+        android:label="@string/menu_thoikhoabieu"
+        tools:layout="@layout/fragment_thoikhoabieu"/>
+</navigation>
