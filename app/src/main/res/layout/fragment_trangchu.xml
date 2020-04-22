@@ -67,6 +67,28 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/et_custom"/>
+            <TextView
+                android:drawablePadding="5dp"
+                android:drawableLeft="@drawable/ic_cake_black_24dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/ebgaramond"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ngày sinh:"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"/>
+            <TextView
+                android:id="@+id/tv_ngaysinh"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/et_custom"/>
 
             <TextView
                 android:textSize="16dp"

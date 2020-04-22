@@ -32,14 +32,15 @@ public class TrangchuFragment extends Fragment {
 
     View v;
     Connection connect;
-    TextView mHotengs, mEmailgs, mSodienthoaigs, mDiachigs, mTruongtheohocgs, mChuyennganhgs, mMondaygs, mTrinhdogs;
+    TextView mHotengs, mNgaysinh, mEmailgs, mSodienthoaigs, mDiachigs, mTruongtheohocgs, mChuyennganhgs, mMondaygs, mTrinhdogs;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_trangchu,container,false);
 
         mHotengs = (TextView) v.findViewById( R.id.tv_hotengs );
-        mEmailgs = (TextView) v.findViewById( R.id.tv_emailgs );
+        mNgaysinh = (TextView) v.findViewById( R.id.tv_ngaysinh );
+        mEmailgs = (TextView) v.findViewById( R.id.tv_emailgs);
         mSodienthoaigs = (TextView) v.findViewById( R.id.tv_sodienthoaigs );
         mDiachigs = (TextView) v.findViewById( R.id.tv_diachigs );
         mTruongtheohocgs = (TextView) v.findViewById( R.id.tv_truongtheohocgs );
@@ -57,20 +58,21 @@ public class TrangchuFragment extends Fragment {
                 SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
                 SharedPreferences.Editor editor = mPreferences.edit();
 
-                String tentaikhoan = mPreferences.getString( "tentaikhoangs","" );
+                String tentaikhoan = mPreferences.getString( "Tentaikhoangs","" );
 
-                String query = "select * from taikhoan_gs where tentaikhoangs = '"+tentaikhoan+"'";
+                String query = "select * from thongtingiasu where Tentaikhoangs = '"+tentaikhoan+"'";
                 Statement st = connect.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 if(rs.next()){
-                    mHotengs.setText(rs.getString("hotengs"));
-                    mEmailgs.setText(rs.getString("emailgs"));
-                    mSodienthoaigs.setText(rs.getString("sodienthoaigs"));
-                    mDiachigs.setText(rs.getString("diachigs"));
-                    mTruongtheohocgs.setText(rs.getString("truongtheohocgs"));
-                    mChuyennganhgs.setText(rs.getString("chuyennganhgs"));
-                    mMondaygs.setText(rs.getString("mondaygs"));
-                    mTrinhdogs.setText(rs.getString("trinhdogs"));
+                    mHotengs.setText(rs.getString("Hotengs"));
+                    mNgaysinh.setText(rs.getString("Ngaysinhgs"));
+                    mEmailgs.setText(rs.getString("Emailgs"));
+                    mSodienthoaigs.setText(rs.getString("Sdtgs"));
+                    mDiachigs.setText(rs.getString("Diachigs"));
+                    mTruongtheohocgs.setText(rs.getString("Truongtheohocgs"));
+                    mChuyennganhgs.setText(rs.getString("Chuyennganhgs"));
+                    mMondaygs.setText(rs.getString("MonhocID"));
+                    mTrinhdogs.setText(rs.getString("TrinhdoID"));
                 }
             }
         } catch (Exception ex) {

@@ -53,9 +53,9 @@ public class dangnhap extends AppCompatActivity {
             public void onClick(View view) {
 
                 String tentaikhoan = mTentaikhoan.getText().toString();
-                mEditor.putString( "tentaikhoangs",tentaikhoan );
+                mEditor.putString( "Tentaikhoangs",tentaikhoan );
                 String matkhau = mMatkhau.getText().toString();
-                mEditor.putString( "matkhaugs", matkhau );
+                mEditor.putString( "Matkhaugs", matkhau );
 
                 if (tentaikhoan.equals( "" )||matkhau.equals( "" )) {
                     Toast.makeText( getApplicationContext(),"Hãy nhập tên tài khoản và mật khẩu", Toast.LENGTH_SHORT ).show();
@@ -68,7 +68,7 @@ public class dangnhap extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Lỗi kết nối",Toast.LENGTH_SHORT).show();
                         } else {
                             //progressBar.setVisibility(View.VISIBLE);
-                            String query ="select * from taikhoan_gs where tentaikhoangs = '" + tentaikhoan + "' and matkhaugs = '"+ matkhau +"' ";
+                            String query ="select * from thongtingiasu where Tentaikhoangs = '" + tentaikhoan + "' and Matkhaugs = '"+ matkhau +"' ";
                             Statement stmt = connect.createStatement();
                             ResultSet rs = stmt.executeQuery(query);
                             if (rs.next()) {
@@ -90,8 +90,8 @@ public class dangnhap extends AppCompatActivity {
         });
     }
     public void checkSharedPreferences() {
-        String tentaikhoan = mPreferences.getString( "tentaikhoangs","" );
-        String matkhau = mPreferences.getString( "matkhaugs","" );
+        String tentaikhoan = mPreferences.getString( "Tentaikhoangs","" );
+        String matkhau = mPreferences.getString( "Matkhaugs","" );
 
         mTentaikhoan.setText(tentaikhoan);
         mMatkhau.setText(matkhau);

@@ -23,7 +23,7 @@ public class ConnectionHelper {
         String ConnectionURL = null;
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            ConnectionURL="jdbc:jtds:sqlserver://192.168.1.3"+ ";databaseName=" + DB + ";user=" + DBUserName + ";password=" + DBPassword + ";";
+            ConnectionURL="jdbc:jtds:sqlserver://192.168.1.5"+ ";databaseName=" + DB + ";user=" + DBUserName + ";password=" + DBPassword + ";";
             connection = DriverManager.getConnection(ConnectionURL);
         } catch (SQLException se) {
             Log.e("Error From SQL", se.getMessage());
