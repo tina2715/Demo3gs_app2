@@ -39,10 +39,8 @@ public class dangky_giasu extends AppCompatActivity {
 
     private Spinner spinDaymon, spinTrinhdo;
     ArrayList<String> monhocID = new ArrayList<>();
-    ArrayList<String> tenmon = new ArrayList<>();
     String MonhocID;
     ArrayList<String> trinhdoID = new ArrayList<>();
-    ArrayList<String> loaitrinhdo = new ArrayList<>();
     String TrinhdoID;
 
 
@@ -112,17 +110,17 @@ public class dangky_giasu extends AppCompatActivity {
         } else {
             try {
                 Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery( "Select * from Monhoc" );
+                ResultSet rs = st.executeQuery( "Select * from Daymon" );
                 rs.next();
                 do {
                     monhocID.add(rs.getString(1));
-                    tenmon.add(rs.getString(2));
+                    //tenmon.add(rs.getString(2));
                 } while (rs.next());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,tenmon);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,monhocID);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinDaymon.setAdapter(adapter);
             spinDaymon.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
@@ -149,17 +147,17 @@ public class dangky_giasu extends AppCompatActivity {
         } else {
             try {
                 Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery( "Select * from Trinhdo" );
+                ResultSet rs = st.executeQuery( "Select * from Trinhdogs" );
                 rs.next();
                 do {
                     trinhdoID.add(rs.getString(1));
-                    loaitrinhdo.add(rs.getString(2));
+                    //loaitrinhdo.add(rs.getString(2));
                 } while (rs.next());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,loaitrinhdo);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,trinhdoID);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinTrinhdo.setAdapter(adapter);
             spinTrinhdo.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
@@ -197,8 +195,6 @@ public class dangky_giasu extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Lỗi", Toast.LENGTH_SHORT ).show();
                 } else {
                     try {
-//                        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//                        SharedPreferences.Editor editor = mPreferences.edit();
                         String edtTentaikhoan = edt_tentaikhoangs.getText().toString().trim();
                         String edtMatkhau = edt_matkhaugs.getText().toString().trim();
                         String edtHoten = edt_hotengs.getText().toString().trim();
@@ -210,10 +206,8 @@ public class dangky_giasu extends AppCompatActivity {
                         String edtChuyennganh = edt_chuyennganhgs.getText().toString().trim();
                         String monhocID = MonhocID.toString();
                         String trinhdoID = TrinhdoID.toString();
-//                        String edtTenlop = edt_tenlop.getText().toString().trim();
-//                        String bomonID = BomonId.toString();
-//                        String dobb = dob.getText().toString();
-                        String query = "INSERT INTO thongtingiasu(Tentaikhoangs,Matkhaugs, Hotengs, Ngaysinhgs, Emailgs, Sdtgs, Diachigs, Truongtheohocgs, Chuyennganhgs, MonhocID, TrinhdoID) VALUES('"+edtTentaikhoan+"','"+edtMatkhau+"','"+edtHoten+"','"+tvNgssinh+"','"+edtEmail+"','"+edtSdt+"','"+edtDiachi+"','"+edtTruongtheohoc+"','"+edtChuyennganh+"','"+monhocID+"','"+trinhdoID+"')";
+                        String query = "INSERT INTO ttgs(Tentaikhoangs,Matkhaugs, Hotengs, Ngaysinhgs, Emailgs, Sdtgs, Diachigs, Truongtheohoc, Chuyennganh, Tenmongs, Tentrinhdo) VALUES('"
+                                +edtTentaikhoan+"','"+edtMatkhau+"','"+edtHoten+"','"+tvNgssinh+"','"+edtEmail+"','"+edtSdt+"','"+edtDiachi+"','"+edtTruongtheohoc+"','"+edtChuyennganh+"','"+monhocID+"','"+trinhdoID+"')";
                         PreparedStatement pst = connect.prepareStatement(query);
                         pst.executeUpdate();
                         Toast.makeText( getApplicationContext(), "Cập nhật thành công", Toast.LENGTH_SHORT ).show();

@@ -68,7 +68,7 @@ public class dangnhap extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Lỗi kết nối",Toast.LENGTH_SHORT).show();
                         } else {
                             //progressBar.setVisibility(View.VISIBLE);
-                            String query ="select * from thongtingiasu where Tentaikhoangs = '" + tentaikhoan + "' and Matkhaugs = '"+ matkhau +"' ";
+                            String query ="select * from ttgs where Tentaikhoangs = '" + tentaikhoan + "' and Matkhaugs = '"+ matkhau +"' ";
                             Statement stmt = connect.createStatement();
                             ResultSet rs = stmt.executeQuery(query);
                             if (rs.next()) {

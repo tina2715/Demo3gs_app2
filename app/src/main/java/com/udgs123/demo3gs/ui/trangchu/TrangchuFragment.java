@@ -60,7 +60,7 @@ public class TrangchuFragment extends Fragment {
 
                 String tentaikhoan = mPreferences.getString( "Tentaikhoangs","" );
 
-                String query = "select * from thongtingiasu where Tentaikhoangs = '"+tentaikhoan+"'";
+                String query = "select * from ttgs where Tentaikhoangs = '"+tentaikhoan+"'";
                 Statement st = connect.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 if(rs.next()){
@@ -69,10 +69,10 @@ public class TrangchuFragment extends Fragment {
                     mEmailgs.setText(rs.getString("Emailgs"));
                     mSodienthoaigs.setText(rs.getString("Sdtgs"));
                     mDiachigs.setText(rs.getString("Diachigs"));
-                    mTruongtheohocgs.setText(rs.getString("Truongtheohocgs"));
-                    mChuyennganhgs.setText(rs.getString("Chuyennganhgs"));
-                    mMondaygs.setText(rs.getString("MonhocID"));
-                    mTrinhdogs.setText(rs.getString("TrinhdoID"));
+                    mTruongtheohocgs.setText(rs.getString("Truongtheohoc"));
+                    mChuyennganhgs.setText(rs.getString("Chuyennganh"));
+                    mMondaygs.setText(rs.getString("Tenmongs"));
+                    mTrinhdogs.setText(rs.getString("Tentrinhdo"));
                 }
             }
         } catch (Exception ex) {
