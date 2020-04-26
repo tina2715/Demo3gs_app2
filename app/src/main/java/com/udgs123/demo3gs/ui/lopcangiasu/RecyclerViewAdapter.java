@@ -1,8 +1,7 @@
 package com.udgs123.demo3gs.ui.lopcangiasu;
 
+
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,93 +16,103 @@ import com.udgs123.demo3gs.R;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-
-    List<Lopcangiasu> mData;
-    Dialog myDialog;
-    public RecyclerViewAdapter(List<Lopcangiasu> mData) {
-        this.mData=mData;
-    }
-
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lopcangiasu,parent, false);
-        final MyViewHolder vHolder = new MyViewHolder(v);
-
-        myDialog = new Dialog(parent.getContext());
-        myDialog.setContentView(R.layout.dialog_lopcangiasu);
-        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable( Color.TRANSPARENT));
-
-
-        vHolder.btn_xemchitiet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView dialog_tenlop_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_tenlop_id_tc);
-                TextView dialog_ngaydang_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_ngaydang_id_tc);
-                TextView dialog_motayeucau_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_motayeucau_id_tc);
-                TextView dialog_monhoc_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_monhoc_id_tc);
-                TextView dialog_diachi_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_diachi_id_tc);
-                TextView dialog_hocphi_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_hocphi_id_tc);
-                TextView dialog_trinhdogiasu_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_trinhdogiasu_id_tc);
-                TextView dialog_thoigianhoc_tv_tc = (TextView) myDialog.findViewById(R.id.dialog_thoigianhoc_id_tc);
-                dialog_tenlop_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getTenloptc());
-                dialog_ngaydang_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getNgaydangtc());
-                dialog_motayeucau_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getMotayeucautc());
-                dialog_monhoc_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getMonhoctc());
-                dialog_diachi_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getDiachitc());
-                dialog_hocphi_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getHocphitc());
-                dialog_trinhdogiasu_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getTrinhdogiasutc());
-                dialog_thoigianhoc_tv_tc.setText(mData.get(vHolder.getAdapterPosition()).getThoigianhoctc());
-
-                myDialog.show();
-            }
-        });
+        public List<Lopcangiasu> lstLopcangiasu;
+        public RecyclerViewAdapter(List<Lopcangiasu> lstLopcangiasu) {this.lstLopcangiasu = lstLopcangiasu;}
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            final View view;
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lopcangiasu,parent,false);
+            final MyViewHolder vHolder = new MyViewHolder(view);
+            final Dialog dialogss=new Dialog(parent.getContext());
+            dialogss.setContentView(R.layout.dialog_lopcangiasu);
+            dialogss.getWindow();
+            vHolder.btnXemchitiet.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TextView malophoc_dialog = (TextView) dialogss.findViewById(R.id.tv_malop_dialog);
+                    TextView tentaikhoanhv_dialog = (TextView) dialogss.findViewById(R.id.tv_tentaikhoanhv_dialog);
+                    TextView caplop_dialog = (TextView) dialogss.findViewById(R.id.tv_caplop_dialog);
+                    TextView tenmonhoc_dialog = (TextView) dialogss.findViewById(R.id.tv_tenmonhoc_dialog);
+                    TextView diadiemhoc_dialog = (TextView) dialogss.findViewById(R.id.tv_diadiemhoc_dialog);
+                    TextView ngaydukien_dialog = (TextView) dialogss.findViewById(R.id.tv_ngaydukien_dialog);
+                    TextView soluonggio_dialog = (TextView) dialogss.findViewById(R.id.tv_soluonggio_dialog);
+                    TextView ngayhoctrongtuan_dialog = (TextView) dialogss.findViewById(R.id.tv_ngayhoctrongtuan_dialog);
+                    TextView giobatdauhoc_dialog = (TextView) dialogss.findViewById(R.id.tv_giobatdau_dialog);
+                    TextView loaitrinhdo_dialog = (TextView) dialogss.findViewById(R.id.tv_loaitrinhdo_dialog);
+                    TextView mota_dialog = (TextView) dialogss.findViewById(R.id.tv_mota_dialog);
+                    TextView ngaytao_dialog = (TextView) dialogss.findViewById(R.id.tv_ngaytao_dialog);
+                    TextView hocphi_dialog = (TextView) dialogss.findViewById(R.id.tv_hocphi_dialog);
 
 
-        return vHolder;
-    }
+                    malophoc_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getMalophoc());
+                    tentaikhoanhv_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getTentaikhoanhv());
+                    caplop_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getCaplop());
+                    tenmonhoc_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getTenmonhoc());
+                    diadiemhoc_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getDiadiem());
+                    ngaydukien_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getNgaydukien());
+                    soluonggio_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getSoluonggio());
+                    ngayhoctrongtuan_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getNgayhoctrongtuan());
+                    giobatdauhoc_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getGiobatdau());
+                    loaitrinhdo_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getLoaitrinhdo());
+                    mota_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getMota());
+                    ngaytao_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getNgaytao());
+                    hocphi_dialog.setText(lstLopcangiasu.get(vHolder.getAdapterPosition()).getHocphi());
+                    dialogss.show();
+                }
+            } );
+
+
+            return vHolder;
+
+
+        }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.tv_tenlop.setText(mData.get(position).getTenloptc());
-        holder.tv_ngaydang.setText(mData.get(position).getNgaydangtc());
-        holder.tv_motayeucau.setText(mData.get(position).getMotayeucautc());
-        holder.tv_monhoc.setText(mData.get(position).getMonhoctc());
-        holder.tv_diachi.setText(mData.get(position).getDiachitc());
-        holder.tv_hocphi.setText(mData.get(position).getHocphitc());
-        holder.tv_trinhdogiasu.setText(mData.get(position).getTrinhdogiasutc());
-        holder.tv_thoigianhoc.setText(mData.get(position).getThoigianhoctc());
+            holder.malophoc.setText(lstLopcangiasu.get(position).getMalophoc());
+            holder.tentaikhoanhv.setText(lstLopcangiasu.get(position).getTentaikhoanhv());
+            holder.caplop.setText(lstLopcangiasu.get(position).getCaplop());
+            holder.tenmonhoc.setText(lstLopcangiasu.get(position).getTenmonhoc());
+            holder.diadiem.setText(lstLopcangiasu.get(position).getDiadiem());
+            holder.ngaydukien.setText(lstLopcangiasu.get(position).getNgaydukien());
+            holder.soluonggio.setText(lstLopcangiasu.get(position).getSoluonggio());
+            holder.ngayhoctrongtuan.setText(lstLopcangiasu.get(position).getNgayhoctrongtuan());
+            holder.giobatdau.setText(lstLopcangiasu.get(position).getGiobatdau());
+            holder.loaitrinhdo.setText(lstLopcangiasu.get(position).getLoaitrinhdo());
+            holder.mota.setText(lstLopcangiasu.get(position).getMota());
+            holder.ngaytao.setText(lstLopcangiasu.get(position).getNgaytao());
+            holder.trangthailop.setText(lstLopcangiasu.get(position).getTrangthailop());
+            holder.tentaikhoangs.setText(lstLopcangiasu.get(position).getTentaikhoangs());
+            holder.hocphi.setText(lstLopcangiasu.get(position).getHocphi());
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return this.lstLopcangiasu.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_tenlop;
-        private  TextView tv_ngaydang;
-        private TextView tv_motayeucau;
-        private TextView tv_monhoc;
-        private TextView tv_diachi;
-        private TextView tv_hocphi;
-        private TextView tv_trinhdogiasu;
-        private TextView tv_thoigianhoc;
-        private Button btn_xemchitiet;
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            tv_tenlop = (TextView) itemView.findViewById( R.id.ten_ttlophoc_tc);
-            tv_ngaydang = (TextView) itemView.findViewById(R.id.ngaydang_ttlophoc_tc);
-            tv_motayeucau = (TextView) itemView.findViewById(R.id.motayeucau_ttlophoc_tc);
-            tv_monhoc = (TextView) itemView.findViewById(R.id.monhoc_ttlophoc_tc);
-            tv_diachi = (TextView) itemView.findViewById(R.id.diachi_ttlophoc_tc);
-            tv_hocphi = (TextView) itemView.findViewById(R.id.hocphi_ttlophoc_tc);
-            tv_trinhdogiasu = (TextView) itemView.findViewById(R.id.trinhdogiasu_ttlophoc_tc);
-            tv_thoigianhoc = (TextView) itemView.findViewById(R.id.thoigianhoc_ttlophoc_tc);
-            btn_xemchitiet = (Button) itemView.findViewById(R.id.btn_xemchitiet_tc);
-        }
+            private TextView malophoc, tentaikhoanhv, caplop, tenmonhoc, diadiem, ngaydukien, soluonggio, ngayhoctrongtuan, giobatdau, loaitrinhdo, mota, ngaytao, trangthailop, tentaikhoangs, hocphi;
+            private Button btnXemchitiet;
 
-    }
+            public MyViewHolder(View itemView){
+                super(itemView);
+                malophoc = (TextView) itemView.findViewById(R.id.tv_malop_item);
+                tentaikhoanhv = (TextView) itemView.findViewById(R.id.tv_tentaikhoanhv_item);
+                caplop = (TextView) itemView.findViewById(R.id.tv_caplop_item);
+                tenmonhoc = (TextView) itemView.findViewById(R.id.tv_tenmonhoc_item);
+                diadiem = (TextView) itemView.findViewById(R.id.tv_diadiemhoc_item);
+                ngaydukien = (TextView) itemView.findViewById(R.id.tv_ngaydukien_item);
+                soluonggio = (TextView) itemView.findViewById(R.id.tv_soluonggio_item);
+                ngayhoctrongtuan = (TextView) itemView.findViewById(R.id.tv_ngayhoctrongtuan_item);
+                giobatdau = (TextView) itemView.findViewById(R.id.tv_giobatdau_item);
+                loaitrinhdo = (TextView) itemView.findViewById(R.id.tv_loaitrinhdo_item);
+                mota = (TextView) itemView.findViewById(R.id.tv_mota_item);
+                ngaytao = (TextView) itemView.findViewById(R.id.tv_ngaytao_item);
+                trangthailop = (TextView) itemView.findViewById(R.id.tv_trangthailop_item);
+                tentaikhoangs = (TextView) itemView.findViewById(R.id.tv_tentaikhoangs_item);
+                hocphi = (TextView) itemView.findViewById(R.id.tv_hocphi_item);
+                btnXemchitiet = (Button) itemView.findViewById(R.id.btn_xemchitiet);
+            }
+        }
 
 }

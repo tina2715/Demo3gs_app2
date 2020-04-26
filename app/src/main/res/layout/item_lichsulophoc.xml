@@ -4,16 +4,16 @@
     android:id="@+id/lichsulophoc_item_id"
     android:background="@drawable/nen_sang"
     android:layout_width="match_parent"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="5dp"
+    android:weightSum="10"
     android:padding="10dp"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_weight="9"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="vertical"
-        android:layout_width="230dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content">
         <TextView
             android:fontFamily="@font/dancing"
@@ -106,7 +106,8 @@
             android:textStyle="bold"/>
     </LinearLayout>
         <Button
-            android:layout_width="60dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:background="@drawable/ic_chevron_right_black_24dp"
             android:layout_height="50dp"
             android:id="@+id/btn_xemchitiet"
