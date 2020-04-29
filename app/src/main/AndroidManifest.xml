@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".doimatkhau"></activity>
+        <activity android:name=".Chitiet_lopcangiasu"/>
         <activity
             android:name=".ManHinhDauTien"
             android:label="@string/title_activity_man_hinh_dau_tien"
