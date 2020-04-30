@@ -16,7 +16,6 @@ import com.udgs123.demo3gs.OnItemClickListener;
 import com.udgs123.demo3gs.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
         public ArrayList<Lopcangiasu> mLopcangiasu;

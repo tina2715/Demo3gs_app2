@@ -1,129 +1,369 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialog_lopchonhan"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    tools:context=".Chitiet_lopchonhan">
     <LinearLayout
-        android:background="@drawable/bogoc_khungnhin1"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
         <TextView
-            android:fontFamily="@font/dancing"
-            android:id="@+id/dialog_tenlop_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tên lớp"
-            android:textColor="@color/orange"
-            android:textStyle="bold"
-            android:textSize="28dp"/>
-        <TextView
-            android:fontFamily="@font/ebgaramond"
-            android:layout_gravity="center_horizontal"
-            android:textStyle="italic"
-            android:id="@+id/dialog_trangthai_id"
-            android:text="Trạng thái"
-            android:textColor="@color/blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"/>
-        <LinearLayout
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp">
+            android:text="Thông tin lớp chờ nhận"
+            android:textColor="@color/orange"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã số lớp:"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_malop_dialog"
+                android:fontFamily="@font/dancing"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Mã lớp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/ebgaramond"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tài khoản học viên"
+                />
+            <TextView
+                android:textColor="@color/blue"
+                android:layout_alignParentRight="true"
+                android:id="@+id/tv_tentaikhoanhv_dialog"
+                android:fontFamily="@font/ebgaramond"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tài khoản học viên"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên lớp "
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_caplop_dialog"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cấp lớp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
                 android:fontFamily="@font/ebgaramond"
                 android:drawablePadding="5dp"
-                android:padding="5dp"
-                android:drawableLeft="@drawable/ic_library_books_black_24dp"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên môn học"
+                />
             <TextView
-                android:layout_gravity="center"
-                android:fontFamily="@font/ebgaramond"
-                android:text="Môn học"
-                android:id="@+id/dialog_monhoc_id"
+                android:layout_alignParentRight="true"
+                android:id="@+id/tv_tenmonhoc_dialog"
                 android:textColor="@color/blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"/>
-        </LinearLayout>
-        <LinearLayout
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_home_black_24dp"/>
-            <TextView
-                android:layout_gravity="center"
+                android:textSize="18sp"
                 android:fontFamily="@font/ebgaramond"
-                android:text="Địa chỉ: "
-                android:id="@+id/dialog_diachi_id"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Tên môn học"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa điểm học"
+                />
+            <TextView
+                android:id="@+id/tv_diadiemhoc_dialog"
+                android:textColor="@color/blue"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa điểm học"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:fontFamily="@font/ebgaramond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày dự kiến:  "
                 android:textSize="18sp"/>
-        </LinearLayout>
+            <TextView
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:id="@+id/tv_ngaydukien_dialog"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày dự kiến"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng giờ"
+                />
+            <TextView
+                android:id="@+id/tv_soluonggio_dialog"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng giờ"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thời gian học"
+                />
+            <TextView
+                android:id="@+id/tv_ngayhoctrongtuan_dialog"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày học trong tuần"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giờ bắt đầu học"
+                />
+            <TextView
+                android:id="@+id/tv_giobatdau_dialog"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:text="Giờ bắt đầu học"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại trình độ"
+                />
+            <TextView
+                android:id="@+id/tv_loaitrinhdo_dialog"
+                android:textColor="@color/blue"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại trình độ"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                />
+            <TextView
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:id="@+id/tv_mota_dialog"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày tạo"
+                />
+            <TextView
+                android:id="@+id/tv_ngaytao_dialog"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày tạo"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Học phí"
+                />
 
-        <TextView
-            android:gravity="center_horizontal"
-            android:fontFamily="@font/dancing"
-            android:text="Học phí"
-            android:id="@+id/dialog_hocphi_id"
-            android:textColor="@color/orange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="24dp"/>
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp">
             <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_school_black_24dp"/>
-            <TextView
-                android:fontFamily="@font/ebgaramond"
-                android:layout_gravity="center"
-                android:text="Trình độ gia sư:"
-                android:id="@+id/dialog_trinhdogiasu_id"
+                android:id="@+id/tv_hocphi_dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp">
-            <TextView
-                android:layout_gravity="center"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_today_black_24dp"/>
-            <TextView
+                android:layout_alignParentRight="true"
                 android:fontFamily="@font/ebgaramond"
-                android:layout_gravity="center"
-                android:text="Thời gian học:"
-                android:textColor="@color/xanh"
-                android:id="@+id/dialog_thoigianhoc_id"
+                android:text="Học phí"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:fontFamily="@font/ebgaramond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp" />
-        </LinearLayout>
+                android:text="Trạng thái lớp:  "
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:id="@+id/tv_trangthailop_dialog"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trạng thái lớp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:fontFamily="@font/ebgaramond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên tài khoản gs:  "
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:id="@+id/tv_tentaikhoangs_dialog"
+                android:textSize="18sp"
+                android:fontFamily="@font/ebgaramond"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên tài khoản gia sư"
+                />
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

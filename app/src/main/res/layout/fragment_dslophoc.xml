@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/nen1234"
     android:orientation="vertical">
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="10dp"
         tools:listitem="@layout/item_dslophoc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/dslophoc_recyclerview">
-    </androidx.recyclerview.widget.RecyclerView>
 
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/text_dslophoc"
@@ -25,5 +25,6 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal" />
 </LinearLayout>

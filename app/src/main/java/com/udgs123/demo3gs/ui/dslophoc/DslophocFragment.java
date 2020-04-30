@@ -1,11 +1,16 @@
 package com.udgs123.demo3gs.ui.dslophoc;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -16,56 +21,156 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.udgs123.demo3gs.Chitiet_ttlophoc;
+import com.udgs123.demo3gs.ConnectionHelper;
+import com.udgs123.demo3gs.LoadingDialog;
+import com.udgs123.demo3gs.OnItemClickListener;
 import com.udgs123.demo3gs.R;
+import com.udgs123.demo3gs.ui.lopchonhan.Lopchonhan;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DslophocFragment extends Fragment {
 
     View v;
-    private RecyclerView myrecyclerview;
-    private List<Dslophoc> lstDslophoc;
-   // private Button btnchitietthongtinhocvien;
+    Connection connect;
+    RecyclerViewAdapter recyclerViewAdapter;
+    ArrayList<Dslophoc> dslophocs;
+    RecyclerView recyclerView;
+    ArrayList<String> malophoc = new ArrayList<>();
+    ArrayList<String> tentaikhoanhv = new ArrayList<>();
+    ArrayList<String> caplop = new ArrayList<>();
+    ArrayList<String> tenmonhoc = new ArrayList<>();
+    ArrayList<String> diadiem = new ArrayList<>();
+    ArrayList<String> ngaydukien = new ArrayList<>();
+    ArrayList<String> soluonggio = new ArrayList<>();
+    ArrayList<String> ngayhoctrongtuan = new ArrayList<>();
+    ArrayList<String> giobatdau = new ArrayList<>();
+    ArrayList<String> loaitrinhdo = new ArrayList<>();
+    ArrayList<String> mota = new ArrayList<>();
+    ArrayList<String> ngaytao = new ArrayList<>();
+    ArrayList<String> trangthailop = new ArrayList<>();
+    ArrayList<String> tentaikhoangs = new ArrayList<>();
+    ArrayList<String> hocphi = new ArrayList<>();
+    String[] malophocArr, tentaikhoanhvArr, caplopArr, tenmonhocArr,diadiemArr,ngaydukienArr,soluonggioArr,
+            ngayhoctrongtuanArr,giobatdauArr,loaitrinhdoArr,motaArr,ngaytaoArr,trangthailopArr, tentaikhoangsArr, hocphiArr;
 
-    public DslophocFragment () {
-    }
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         v =inflater.inflate(R.layout.fragment_dslophoc,container,false);
-//btnchitietthongtinhocvien = (Button) v.findViewById(R.id.btn_xem_ttsinhvien);
-//btnchitietthongtinhocvien.setOnClickListener(new View.OnClickListener() {
-//    @Override
-//    public void onClick(View view) {
-//        ChitiettthocvienFragment newAtmFragment = new ChitiettthocvienFragment();
-//        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.replace(R.id.dialog_ttlophoc, newAtmFragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//    }
-//});
-        myrecyclerview = (RecyclerView) v.findViewById(R.id.dslophoc_recyclerview);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstDslophoc);
-        myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-        myrecyclerview.setAdapter(recyclerViewAdapter);
+        recyclerView =v.findViewById( R.id.dslophoc_recyclerview );
+        dslophocs = new ArrayList<>();
+        malophoc.clear();
+        tentaikhoanhv.clear();
+        caplop.clear();
+        tenmonhoc.clear();
+        diadiem.clear();
+        ngaydukien.clear();
+        soluonggio.clear();
+        ngayhoctrongtuan.clear();
+        giobatdau.clear();
+        loaitrinhdo.clear();
+        mota.clear();
+        ngaytao.clear();
+        trangthailop.clear();
+        tentaikhoangs.clear();
+        hocphi.clear();
+        try {
+            ConnectionHelper connectHelper = new ConnectionHelper();
+            connect = connectHelper.connections();
+            if (connect==null) {
+                Toast.makeText(getActivity(),"Loi",Toast.LENGTH_LONG).show();
+            } else {
+                SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                mPreferences.edit();
+                String tentaikhoan = mPreferences.getString( "Tentaikhoangs","" );
+                String query = "SELECT * FROM Quanlylop Where Trangthailop=2 AND Tentaikhoangs='"+tentaikhoan+"'";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    malophoc.add(rs.getString("Malophoc"));
+                    tentaikhoanhv.add(rs.getString("Tentaikhoanhv"));
+                    caplop.add(rs.getString("Caplop"));
+                    tenmonhoc.add(rs.getString("Tenmonhoc"));
+                    diadiem.add(rs.getString("Diadiem"));
+                    ngaydukien.add(rs.getString("Ngaydukien"));
+                    soluonggio.add(rs.getString("Soluonggio"));
+                    ngayhoctrongtuan.add(rs.getString("Ngayhoctrongtuan"));
+                    giobatdau.add(rs.getString("Giobatdau"));
+                    loaitrinhdo.add(rs.getString("Loaitrinhdo"));
+                    mota.add(rs.getString("Mota"));
+                    ngaytao.add(rs.getString("Ngaytao"));
+                    trangthailop.add(rs.getString("Trangthailop"));
+                    tentaikhoangs.add(rs.getString("Tentaikhoangs"));
+                    hocphi.add(rs.getString("Hocphi"));
+                }
+                malophocArr = new String[malophoc.size()];
+                malophocArr = malophoc.toArray(malophocArr);
+                tentaikhoanhvArr = new String[tentaikhoanhv.size()];
+                tentaikhoanhvArr = tentaikhoanhv.toArray(tentaikhoanhvArr);
+                caplopArr = new String[caplop.size()];
+                caplopArr = caplop.toArray(caplopArr);
+                tenmonhocArr = new String[tenmonhoc.size()];
+                tenmonhocArr = tenmonhoc.toArray(tenmonhocArr);
+                diadiemArr = new String[diadiem.size()];
+                diadiemArr = diadiem.toArray(diadiemArr);
+                ngaydukienArr = new String[ngaydukien.size()];
+                ngaydukienArr = ngaydukien.toArray(ngaydukienArr);
+                soluonggioArr = new String[soluonggio.size()];
+                soluonggioArr = soluonggio.toArray(soluonggioArr);
+                ngayhoctrongtuanArr = new String[ngayhoctrongtuan.size()];
+                ngayhoctrongtuanArr = ngayhoctrongtuan.toArray(ngayhoctrongtuanArr);
+                giobatdauArr = new String[giobatdau.size()];
+                giobatdauArr = giobatdau.toArray(giobatdauArr);
+                loaitrinhdoArr = new String[loaitrinhdo.size()];
+                loaitrinhdoArr = loaitrinhdo.toArray(loaitrinhdoArr);
+                motaArr = new String[mota.size()];
+                motaArr = mota.toArray(motaArr);
+                ngaytaoArr = new String[ngaytao.size()];
+                ngaytaoArr = ngaytao.toArray(ngaytaoArr);
+                trangthailopArr = new String[trangthailop.size()];
+                trangthailopArr = trangthailop.toArray(trangthailopArr);
+                tentaikhoangsArr = new String[tentaikhoangs.size()];
+                tentaikhoangsArr = tentaikhoangs.toArray(tentaikhoangsArr);
+                hocphiArr = new String[hocphi.size()];
+                hocphiArr = hocphi.toArray(hocphiArr);
+                for (int i = 0; i < caplop.size(); i++) {
+                    dslophocs.add(new Dslophoc(malophocArr[i],tentaikhoanhvArr[i],caplopArr[i],tenmonhocArr[i],diadiemArr[i],ngaydukienArr[i],soluonggioArr[i],ngayhoctrongtuanArr[i],giobatdauArr[i],loaitrinhdoArr[i],motaArr[i],ngaytaoArr[i],trangthailopArr[i],tentaikhoangsArr[i],hocphiArr[i]));
+                }
+                connect.close();
+            }
+        } catch (Exception e)
+        {
+            Log.d("BBB", e.getMessage());
+        }
+        recyclerViewAdapter = new RecyclerViewAdapter(dslophocs);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(recyclerViewAdapter);
+        if (recyclerView.getAdapter()!=null){
+            ((RecyclerViewAdapter) recyclerView.getAdapter()).setOnItemClickListener( new OnItemClickListener() {
+                @Override
+                public void onClick(View v, @NonNull int position) {
+                    LoadingDialog loadingDialog = new LoadingDialog();
+                    loadingDialog.loading(getActivity());
+                    Intent detail = new Intent(getActivity(), Chitiet_ttlophoc.class );
+                    detail.putExtra("malophoc", malophocArr[position]);
+                    startActivity(detail);
+                }
+                @Override
+                public void onLongClick(View v, @NonNull int position) {
+
+                }
+            } );
+        }
         return v;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        lstDslophoc=new ArrayList<>();
-        lstDslophoc.add(new Dslophoc("Lớp 1","1/1/2018","Bé học yếu, cần hỗ trợ tập đọc", "Tiếng Việt", "Quang Trung - Gò Vấp", "1.600.000","Sinh viên", "Thứ 2,4,6; Từ 17h-19h"));
-        lstDslophoc.add(new Dslophoc("Lớp 2","1/1/2018","Luyện chữ", "Tiếng Việt", "Lê Văn Sỹ - Tân Bình", "1.700.000","Giảng viên", "Thứ 3,5,7; Từ 19h-21h"));
-        lstDslophoc.add(new Dslophoc("Lớp 3","1/1/2018","Luyện giọng khỏe hơn", "Thanh nhạc", "Lê Đại Hành - Quận 11", "2.000.000","Đã tốt nghiệp", "Thứ 2,4,6; Từ 17h-19h"));
-        lstDslophoc.add(new Dslophoc("Lớp 4","1/1/2018", "Cần hỗ trợ môn Toán","Môn Toán", "Đoàn Văn Bơ - Quận 4", "1.300.000","Sinh viên", "Thứ 2,4,6; Từ 17h-19h"));
-        lstDslophoc.add(new Dslophoc("Lớp 5","1/1/2018","Luyện chính tả", "Tiếng Việt", "Trần Hưng Đạo - Quận 1", "1.800.000","Giảng viên", "Thứ 3,5,7; Từ 19h-21h"));
-        lstDslophoc.add(new Dslophoc("Lớp 6","1/1/2018","Luyện văn", "Ngữ văn", "Nguyễn Chí Thanh - Quận 5", "1.400.000","Sinh viên", "Thứ 2,4,6; Từ 17h-19h"));
-        lstDslophoc.add(new Dslophoc("Lớp 7","1/1/2018","Hỗ trợ anh văn", "Tiếng Anh", "Võ Thị Sáu - Quận 3", "1.200.000","Sinh viên", "Thứ 3,5,7; Từ 7h-9h"));
-        lstDslophoc.add(new Dslophoc("Lớp 8","1/1/2018","Cần học anh văn giao tiếp", "Anh văn giao tiếp", "Nguyễn Khoái - Quận 4", "1.900.000","Giảng viên", "Thứ 2,4,6; Từ 13h-15h"));
-        lstDslophoc.add(new Dslophoc("Lớp 9","1/1/2018","Luyện thi vào lớp 10", "Luyện thi lớp 10", "Lê Quang Đinh - Bình Thạnh", "1.000.000","Sinh viên", "Thứ 3,5,7; Từ 19h-21h"));
-        lstDslophoc.add(new Dslophoc("Lớp 10","1/1/2018","Luyện anh văn Toeic", "Anh văn Toeic", "Phan Đăng Lưu - Phú Nhuận", "1.500.000","Đã tốt nghiệp", "Thứ 2,4,6; Từ 17h-19h"));
-    }
+
+
 }

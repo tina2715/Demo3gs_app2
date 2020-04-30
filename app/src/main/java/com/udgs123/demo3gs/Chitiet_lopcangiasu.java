@@ -14,6 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.udgs123.demo3gs.ui.lopchonhan.Lopchonhan;
+import com.udgs123.demo3gs.ui.lopchonhan.LopchonhanFragment;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -93,7 +96,7 @@ public class Chitiet_lopcangiasu extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Lỗi kết nối",Toast.LENGTH_LONG).show();
                     } else {
                         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        SharedPreferences.Editor editor = mPreferences.edit();
+                        mPreferences.edit();
 
                         String tentaikhoan = mPreferences.getString( "Tentaikhoangs","" );
                         String query = "update Quanlylop set Tentaikhoangs='"+tentaikhoan+"', Trangthailop =1 where Malophoc = "+malophoc+"";
@@ -102,7 +105,7 @@ public class Chitiet_lopcangiasu extends AppCompatActivity {
                     } connect.close();
                 } catch (Exception e){
                         Toast.makeText(getApplicationContext(),"Đăng ký nhận lớp thành công",Toast.LENGTH_LONG).show();
-                        Intent i = new Intent( Chitiet_lopcangiasu.this, ManHinhDauTien.class );
+                        Intent i = new Intent( Chitiet_lopcangiasu.this, LopchonhanFragment.class );
                         startActivity( i );
                 }
             }

@@ -12,8 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".doimatkhau"></activity>
+        <activity android:name=".doimatkhau"/>
         <activity android:name=".Chitiet_lopcangiasu"/>
+        <activity android:name=".Chitiet_lopchonhan"/>
+        <activity android:name=".Chitiet_ttlophoc"/>
+        <activity android:name=".Chitiet_lichsulophoc"/>
         <activity
             android:name=".ManHinhDauTien"
             android:label="@string/title_activity_man_hinh_dau_tien"

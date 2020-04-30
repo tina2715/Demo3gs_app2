@@ -210,7 +210,7 @@ public class dangky_giasu extends AppCompatActivity {
                                 +edtTentaikhoan+"','"+edtMatkhau+"','"+edtHoten+"','"+tvNgssinh+"','"+edtEmail+"','"+edtSdt+"','"+edtDiachi+"','"+edtTruongtheohoc+"','"+edtChuyennganh+"','"+monhocID+"','"+trinhdoID+"')";
                         PreparedStatement pst = connect.prepareStatement(query);
                         pst.executeUpdate();
-                        Toast.makeText( getApplicationContext(), "Cập nhật thành công", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText( getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_SHORT ).show();
                         startActivity( new Intent( dangky_giasu.this, dangnhap.class ) );
                         connect.close();
                     } catch (SQLException e) {
